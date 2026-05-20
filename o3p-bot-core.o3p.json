@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "name": "O3P Bot Core",
+  "database": "",
+  "odoo": {
+    "selector": "auto",
+    "addons_dir": ""
+  },
+  "install": {
+    "restart": true,
+    "refresh_apps": true
+  },
+  "modules": [
+    {
+      "name": "o3p_bot_core",
+      "github_repository": "https://github.com/odoo-third-party/o3p-bot-core.git"
+    }
+  ]
+}

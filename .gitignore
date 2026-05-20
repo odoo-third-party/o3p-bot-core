@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local Odoo deployment helpers
+upush.sh
+fulldeploy.sh
+restart_odoo19.sh
+restartodoo.sh

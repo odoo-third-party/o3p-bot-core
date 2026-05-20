@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="O3P Bot Core">
+  <rect width="512" height="512" rx="96" fill="#0f172a"/>
+  <path d="M112 170c0-35.346 28.654-64 64-64h160c35.346 0 64 28.654 64 64v120c0 35.346-28.654 64-64 64H220l-74 58c-13.153 10.312-34 1.172-34-15.548V170z" fill="#14b8a6"/>
+  <path d="M166 190c0-15.464 12.536-28 28-28h124c15.464 0 28 12.536 28 28v80c0 15.464-12.536 28-28 28H194c-15.464 0-28-12.536-28-28v-80z" fill="#f8fafc"/>
+  <circle cx="218" cy="230" r="18" fill="#0f172a"/>
+  <circle cx="294" cy="230" r="18" fill="#0f172a"/>
+  <path d="M218 268h76" stroke="#0f172a" stroke-width="18" stroke-linecap="round"/>
+  <path d="M256 118V74" stroke="#14b8a6" stroke-width="26" stroke-linecap="round"/>
+  <circle cx="256" cy="56" r="22" fill="#f59e0b"/>
+</svg>

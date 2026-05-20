@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O3P Bot Core</title>
+</head>
+<body style="margin:0; padding:0; background:#ffffff; color:#111827; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+  <div style="max-width:960px; margin:0 auto; padding:0 16px 52px; overflow:hidden;">
+
+    <div style="margin-top:22px; padding:30px 28px; border:1px solid #dbe3ea; border-radius:10px; background:#f8fafc;">
+      <div style="display:inline-block; width:116px; max-width:100%; vertical-align:top; margin:0 24px 16px 0;">
+        <img src="icon.svg" alt="" width="104" height="104" style="display:block; width:104px; height:104px; max-width:100%; border:1px solid #dbe3ea; border-radius:22px; background:#ffffff;">
+      </div>
+      <div style="display:inline-block; max-width:720px; vertical-align:top;">
+        <h1 style="margin:0; color:#111827; font-size:38px; line-height:1.12; font-weight:800; letter-spacing:0;">O3P Bot Core</h1>
+        <p style="margin:12px 0 0; color:#334155; font-size:18px; line-height:1.55;">A small Odoo 19 addon that stores bot chats, groups, spaces, channels, and messages from Google Chat, Telegram, and WhatsApp in one normalized model layer.</p>
+      </div>
+      <p style="margin:18px 0 0; color:#0f766e; font-size:14px; line-height:2.1; font-weight:700;">
+        <span style="display:inline-block; margin:0 6px 8px 0; padding:4px 10px; border:1px solid #99f6e4; border-radius:999px; background:#ffffff;">Google Chat</span>
+        <span style="display:inline-block; margin:0 6px 8px 0; padding:4px 10px; border:1px solid #99f6e4; border-radius:999px; background:#ffffff;">Telegram</span>
+        <span style="display:inline-block; margin:0 6px 8px 0; padding:4px 10px; border:1px solid #99f6e4; border-radius:999px; background:#ffffff;">WhatsApp</span>
+        <span style="display:inline-block; margin:0 6px 8px 0; padding:4px 10px; border:1px solid #99f6e4; border-radius:999px; background:#ffffff;">Chats</span>
+        <span style="display:inline-block; margin:0 6px 8px 0; padding:4px 10px; border:1px solid #99f6e4; border-radius:999px; background:#ffffff;">Messages</span>
+        <span style="display:inline-block; margin:0 6px 8px 0; padding:4px 10px; border:1px solid #99f6e4; border-radius:999px; background:#ffffff;">Raw payload retention</span>
+      </p>
+    </div>
+
+    <div style="margin-top:34px;">
+      <h2 style="margin:0; color:#111827; font-size:28px; line-height:1.25; font-weight:800;">Models</h2>
+      <p style="margin:10px 0 0; color:#4b5563; font-size:16px; line-height:1.55;"><code>botchat</code> stores provider, chat ID, display name, group/direct type, provider resource names, profile fields, member state, activity timestamps, and raw API metadata.</p>
+      <p style="margin:10px 0 0; color:#4b5563; font-size:16px; line-height:1.55;"><code>botmsg</code> stores provider message IDs, delivery state, sender/recipient data, text and HTML bodies, media, reactions, contacts, locations, polls, cards, buttons, interactive payloads, and webhook status data.</p>
+    </div>
+
+    <div style="margin-top:36px;">
+      <h2 style="margin:0; color:#111827; font-size:28px; line-height:1.25; font-weight:800;">Provider coverage</h2>
+      <div style="margin-top:16px;">
+        <div style="display:inline-block; width:31%; min-width:240px; vertical-align:top; margin:0 1.5% 14px 0; padding:18px; border:1px solid #dbe3ea; border-radius:8px; background:#ffffff;">
+          <h3 style="margin:0 0 6px; color:#111827; font-size:18px; line-height:1.25; font-weight:800;">Google Chat</h3>
+          <p style="margin:0; color:#4b5563; font-size:15px; line-height:1.55;">Spaces, rooms, DMs, threads, cards, buttons, resource names, and event timestamps.</p>
+        </div>
+        <div style="display:inline-block; width:31%; min-width:240px; vertical-align:top; margin:0 1.5% 14px 0; padding:18px; border:1px solid #dbe3ea; border-radius:8px; background:#ffffff;">
+          <h3 style="margin:0 0 6px; color:#111827; font-size:18px; line-height:1.25; font-weight:800;">Telegram</h3>
+          <p style="margin:0; color:#4b5563; font-size:15px; line-height:1.55;">Private chats, groups, supergroups, channels, usernames, commands, entities, media, polls, and replies.</p>
+        </div>
+        <div style="display:inline-block; width:31%; min-width:240px; vertical-align:top; margin:0 0 14px 0; padding:18px; border:1px solid #dbe3ea; border-radius:8px; background:#ffffff;">
+          <h3 style="margin:0 0 6px; color:#111827; font-size:18px; line-height:1.25; font-weight:800;">WhatsApp</h3>
+          <p style="margin:0; color:#4b5563; font-size:15px; line-height:1.55;">Business phone IDs, contacts, interactive messages, media IDs, status webhooks, reactions, delivery, and read receipts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:34px;">
+      <h2 style="margin:0; color:#111827; font-size:28px; line-height:1.25; font-weight:800;">Menu</h2>
+      <p style="margin:10px 0 0; color:#4b5563; font-size:16px; line-height:1.55;">After installation, open <strong>Bot Core</strong> to manage chats and messages. Standard Odoo users can read and create records; system users can delete records when required.</p>
+    </div>
+
+    <div style="margin-top:34px;">
+      <h2 style="margin:0; color:#111827; font-size:28px; line-height:1.25; font-weight:800;">Changelog</h2>
+      <div style="margin-top:14px; padding:16px; border:1px solid #cbd5e1; border-radius:8px; background:#f8fafc; color:#334155; font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace; font-size:14px; line-height:1.55; white-space:pre-wrap; word-break:break-word;">19.0.1.0.0
+Initial release for Odoo 19.
+- Added botchat and botmsg models.
+- Added list/form/search views and Bot Core menus.
+- Added app store description assets.</div>
+    </div>
+
+  </div>
+</body>
+</html>

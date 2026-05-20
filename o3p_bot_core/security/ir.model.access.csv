@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_botchat_user,botchat user,model_botchat,base.group_user,1,1,1,0
+access_botchat_system,botchat system,model_botchat,base.group_system,1,1,1,1
+access_botmsg_user,botmsg user,model_botmsg,base.group_user,1,1,1,0
+access_botmsg_system,botmsg system,model_botmsg,base.group_system,1,1,1,1

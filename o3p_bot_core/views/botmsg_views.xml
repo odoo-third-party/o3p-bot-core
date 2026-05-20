@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="botmsg_view_list" model="ir.ui.view">
+        <field name="name">botmsg.list</field>
+        <field name="model">botmsg</field>
+        <field name="arch" type="xml">
+            <list string="Bot Messages" multi_edit="1">
+                <field name="provider_timestamp"/>
+                <field name="chat_id"/>
+                <field name="provider"/>
+                <field name="direction"/>
+                <field name="messageid"/>
+                <field name="message_type"/>
+                <field name="state"/>
+                <field name="sender_name"/>
+                <field name="text"/>
+                <field name="error_code" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="botmsg_view_form" model="ir.ui.view">
+        <field name="name">botmsg.form</field>
+        <field name="model">botmsg</field>
+        <field name="arch" type="xml">
+            <form string="Bot Message">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="chat_id"/>
+                            <field name="provider"/>
+                            <field name="messageid"/>
+                            <field name="provider_resource_name"/>
+                            <field name="direction"/>
+                            <field name="message_type"/>
+                            <field name="state"/>
+                        </group>
+                        <group>
+                            <field name="provider_timestamp"/>
+                            <field name="sent_at"/>
+                            <field name="delivered_at"/>
+                            <field name="read_at"/>
+                            <field name="edited_at"/>
+                            <field name="deleted_at"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Content">
+                            <group>
+                                <field name="summary"/>
+                                <field name="text" placeholder="Plain text body..."/>
+                                <field name="html"/>
+                                <field name="caption"/>
+                                <field name="command"/>
+                                <field name="command_arguments"/>
+                                <field name="language_code"/>
+                            </group>
+                        </page>
+                        <page string="Sender">
+                            <group>
+                                <group>
+                                    <field name="sender_id"/>
+                                    <field name="sender_name"/>
+                                    <field name="sender_username"/>
+                                    <field name="sender_phone"/>
+                                    <field name="sender_type"/>
+                                </group>
+                                <group>
+                                    <field name="recipient_id"/>
+                                    <field name="recipient_name"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Threading">
+                            <group>
+                                <field name="thread_id"/>
+                                <field name="reply_to_id"/>
+                                <field name="reply_to_messageid"/>
+                                <field name="forwarded_from"/>
+                                <field name="forward_origin_json" widget="json"/>
+                            </group>
+                        </page>
+                        <page string="Media">
+                            <group>
+                                <group>
+                                    <field name="media_id"/>
+                                    <field name="media_url"/>
+                                    <field name="media_mime_type"/>
+                                    <field name="media_filename"/>
+                                    <field name="media_sha256"/>
+                                    <field name="media_size"/>
+                                </group>
+                                <group>
+                                    <field name="attachment_ids" widget="many2many_binary"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Structured">
+                            <group>
+                                <field name="location_latitude"/>
+                                <field name="location_longitude"/>
+                                <field name="location_address"/>
+                                <field name="reaction_emoji"/>
+                                <field name="reaction_to_messageid"/>
+                            </group>
+                            <group>
+                                <field name="contact_json" widget="json"/>
+                                <field name="poll_json" widget="json"/>
+                                <field name="entities_json" widget="json"/>
+                                <field name="buttons_json" widget="json"/>
+                                <field name="cards_json" widget="json"/>
+                                <field name="interactive_json" widget="json"/>
+                            </group>
+                        </page>
+                        <page string="Delivery">
+                            <group>
+                                <field name="webhook_event"/>
+                                <field name="status_payload_json" widget="json"/>
+                                <field name="error_code"/>
+                                <field name="error_message"/>
+                            </group>
+                        </page>
+                        <page string="Provider Data">
+                            <group>
+                                <field name="metadata_json" widget="json"/>
+                                <field name="raw_payload" widget="json"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="botmsg_view_search" model="ir.ui.view">
+        <field name="name">botmsg.search</field>
+        <field name="model">botmsg</field>
+        <field name="arch" type="xml">
+            <search string="Bot Messages">
+                <field name="chat_id"/>
+                <field name="messageid"/>
+                <field name="sender_name"/>
+                <field name="sender_id"/>
+                <field name="text"/>
+                <field name="media_id"/>
+                <filter name="inbound" string="Inbound" domain="[('direction', '=', 'inbound')]"/>
+                <filter name="outbound" string="Outbound" domain="[('direction', '=', 'outbound')]"/>
+                <filter name="failed" string="Failed" domain="[('state', '=', 'failed')]"/>
+                <filter name="has_media" string="Has Media" domain="[('media_id', '!=', False)]"/>
+                <separator/>
+                <filter name="google_chat" string="Google Chat" domain="[('provider', '=', 'google_chat')]"/>
+                <filter name="telegram" string="Telegram" domain="[('provider', '=', 'telegram')]"/>
+                <filter name="whatsapp" string="WhatsApp" domain="[('provider', '=', 'whatsapp')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_chat_id" string="Chat" context="{'group_by': 'chat_id'}"/>
+                    <filter name="group_provider" string="Provider" context="{'group_by': 'provider'}"/>
+                    <filter name="group_direction" string="Direction" context="{'group_by': 'direction'}"/>
+                    <filter name="group_message_type" string="Message Type" context="{'group_by': 'message_type'}"/>
+                    <filter name="group_state" string="State" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_botmsg" model="ir.actions.act_window">
+        <field name="name">Bot Messages</field>
+        <field name="res_model">botmsg</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="botmsg_view_search"/>
+    </record>
+</odoo>

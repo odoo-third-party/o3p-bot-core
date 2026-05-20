@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="botchat_view_list" model="ir.ui.view">
+        <field name="name">botchat.list</field>
+        <field name="model">botchat</field>
+        <field name="arch" type="xml">
+            <list string="Bot Chats" multi_edit="1">
+                <field name="provider"/>
+                <field name="chatid"/>
+                <field name="display_name"/>
+                <field name="chat_type"/>
+                <field name="member_count" optional="show"/>
+                <field name="message_count" optional="show"/>
+                <field name="last_message_at"/>
+                <field name="active" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="botchat_view_form" model="ir.ui.view">
+        <field name="name">botchat.form</field>
+        <field name="model">botchat</field>
+        <field name="arch" type="xml">
+            <form string="Bot Chat">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_botmsg)d"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-comments"
+                                context="{'search_default_chat_id': id, 'default_chat_id': id}">
+                            <field name="message_count" widget="statinfo" string="Messages"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="provider"/>
+                            <field name="chatid"/>
+                            <field name="name"/>
+                            <field name="title"/>
+                            <field name="chat_type"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="provider_resource_name"/>
+                            <field name="external_thread_key"/>
+                            <field name="username"/>
+                            <field name="phone_number"/>
+                            <field name="phone_number_id"/>
+                            <field name="locale"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Profile">
+                            <group>
+                                <group>
+                                    <field name="first_name"/>
+                                    <field name="last_name"/>
+                                    <field name="avatar_url"/>
+                                    <field name="invite_link"/>
+                                </group>
+                                <group>
+                                    <field name="member_count"/>
+                                    <field name="is_forum"/>
+                                    <field name="is_read_only"/>
+                                    <field name="is_bot_member"/>
+                                </group>
+                            </group>
+                            <field name="description" placeholder="Provider description or topic..."/>
+                        </page>
+                        <page string="Activity">
+                            <group>
+                                <field name="last_message_at"/>
+                                <field name="last_inbound_at"/>
+                                <field name="last_outbound_at"/>
+                            </group>
+                        </page>
+                        <page string="Messages">
+                            <field name="message_ids" context="{'default_chat_id': id}">
+                                <list>
+                                    <field name="provider_timestamp"/>
+                                    <field name="direction"/>
+                                    <field name="messageid"/>
+                                    <field name="message_type"/>
+                                    <field name="state"/>
+                                    <field name="sender_name"/>
+                                    <field name="text"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Provider Data">
+                            <group>
+                                <field name="metadata_json" widget="json"/>
+                                <field name="raw_payload" widget="json"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="botchat_view_search" model="ir.ui.view">
+        <field name="name">botchat.search</field>
+        <field name="model">botchat</field>
+        <field name="arch" type="xml">
+            <search string="Bot Chats">
+                <field name="name"/>
+                <field name="title"/>
+                <field name="chatid"/>
+                <field name="username"/>
+                <field name="phone_number"/>
+                <filter name="active" string="Active" domain="[('active', '=', True)]"/>
+                <filter name="google_chat" string="Google Chat" domain="[('provider', '=', 'google_chat')]"/>
+                <filter name="telegram" string="Telegram" domain="[('provider', '=', 'telegram')]"/>
+                <filter name="whatsapp" string="WhatsApp" domain="[('provider', '=', 'whatsapp')]"/>
+                <separator/>
+                <filter name="group_chats" string="Groups/Spaces" domain="[('chat_type', 'in', ['group', 'supergroup', 'channel', 'space', 'room'])]"/>
+                <filter name="direct_chats" string="Direct" domain="[('chat_type', 'in', ['direct', 'dm', 'business'])]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_provider" string="Provider" context="{'group_by': 'provider'}"/>
+                    <filter name="group_type" string="Type" context="{'group_by': 'chat_type'}"/>
+                    <filter name="group_company" string="Company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_botchat" model="ir.actions.act_window">
+        <field name="name">Bot Chats</field>
+        <field name="res_model">botchat</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="botchat_view_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+    </record>
+</odoo>

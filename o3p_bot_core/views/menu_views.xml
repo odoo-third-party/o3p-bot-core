@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_o3p_bot_core_root"
+              name="Bot Core"
+              sequence="45"
+              web_icon="o3p_bot_core,static/description/icon.png"/>
+
+    <menuitem id="menu_o3p_bot_core_chats"
+              name="Chats"
+              parent="menu_o3p_bot_core_root"
+              action="action_botchat"
+              sequence="10"/>
+
+    <menuitem id="menu_o3p_bot_core_messages"
+              name="Messages"
+              parent="menu_o3p_bot_core_root"
+              action="action_botmsg"
+              sequence="20"/>
+</odoo>
