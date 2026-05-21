@@ -152,7 +152,7 @@
                 <filter name="google_chat" string="Google Chat" domain="[('provider', '=', 'google_chat')]"/>
                 <filter name="telegram" string="Telegram" domain="[('provider', '=', 'telegram')]"/>
                 <filter name="whatsapp" string="WhatsApp" domain="[('provider', '=', 'whatsapp')]"/>
-                <group expand="0" string="Group By">
+                <group name="group_by">
                     <filter name="group_chat_id" string="Chat" context="{'group_by': 'chat_id'}"/>
                     <filter name="group_provider" string="Provider" context="{'group_by': 'provider'}"/>
                     <filter name="group_direction" string="Direction" context="{'group_by': 'direction'}"/>

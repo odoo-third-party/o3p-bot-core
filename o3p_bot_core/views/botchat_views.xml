@@ -121,7 +121,7 @@
                 <separator/>
                 <filter name="group_chats" string="Groups/Spaces" domain="[('chat_type', 'in', ['group', 'supergroup', 'channel', 'space', 'room'])]"/>
                 <filter name="direct_chats" string="Direct" domain="[('chat_type', 'in', ['direct', 'dm', 'business'])]"/>
-                <group expand="0" string="Group By">
+                <group name="group_by">
                     <filter name="group_provider" string="Provider" context="{'group_by': 'provider'}"/>
                     <filter name="group_type" string="Type" context="{'group_by': 'chat_type'}"/>
                     <filter name="group_company" string="Company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
