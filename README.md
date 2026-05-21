@@ -70,7 +70,7 @@ The installer is expected to copy the addon into the configured Odoo addons
 path, refresh the app list, and prepare the module for installation or upgrade.
 
 For a manual command-line upgrade after the addon is already available in an
-Odoo addons path:
+Odoo addons path: 
 
 ```bash
 /opt/odoo19/venv/bin/python3 /opt/odoo19/odoo-bin \
