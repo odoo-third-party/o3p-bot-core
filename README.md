@@ -60,7 +60,7 @@ o3p_bot_core/
 
 ## Installation
 
-On Ubuntu/Debian Odoo hosts, install with: 
+On Ubuntu/Debian Odoo hosts, install with:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/odoo-third-party/o3p-module-install-script/sources/run.sh | bash -s -- --config "https://raw.githubusercontent.com/odoo-third-party/o3p-bot-core/o3p-bot-core.o3p.json"
