@@ -1,5 +1,5 @@
 {
-    "name": "O3P Bot Core",
+    "name": "o3p - bot core",
     "summary": "Unified bot chat and message storage for Google Chat, Telegram, and WhatsApp.",
     "description": (
         "O3P Bot Core provides normalized Odoo models for bot conversations and messages "
