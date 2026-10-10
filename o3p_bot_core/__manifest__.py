@@ -6,7 +6,7 @@
         "across Google Chat, Telegram, and WhatsApp. It stores common chat/message fields "
         "as searchable columns and keeps provider-specific API payloads in JSON fields."
     ),
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Productivity/Discuss",
     "author": "O3P",
     "website": "https://github.com/o3p/o3p-bot-core",
